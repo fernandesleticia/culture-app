@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Eventos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color: #19334d">
+ 
+    <ion-list >
+         <ion-item-sliding *ngFor="let evento of eventos" >
+             <ion-item (click)="openEvento(evento.id)" >
+                <ion-avatar item-start>
+                    <ion-icon name="md-expand"></ion-icon>
+                </ion-avatar>
+                <h2>{{ evento.title }}</h2>
+            </ion-item> 
+      
+         </ion-item-sliding>
+    </ion-list>
+
+    <ion-infinite-scroll (ionInfinite)="getEventos($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando...">
+        </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
